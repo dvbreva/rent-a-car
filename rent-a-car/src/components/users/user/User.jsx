@@ -6,7 +6,7 @@ const User = props => {
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-        getUserById(props.match.params.id).then(response => {
+        getUserById(props.computedMatch.params.id).then(response => {
             console.log(response);
             setUser(response.data);
         });
