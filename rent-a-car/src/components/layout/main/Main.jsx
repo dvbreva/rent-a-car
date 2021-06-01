@@ -2,6 +2,7 @@ import { Switch } from 'react-router-dom';
 import { AuthenticatedRoute } from '../../../core/guards/AuthenticatedRoute';
 import User from '../../users/user/User';
 import UsersList from '../../users/users-list/UsersList';
+import './Main.css';
 
 import { UserEdit } from '../../users/user-edit/UserEdit';
 

@@ -1,24 +1,24 @@
 {
-    "users": [
-        {
-          "id": "c7b73aa3-7b89-4496-a96d-0d0c4327840f",
-          "isAdmin": false,
-          "picture": "https://picsum.photos/200/300?random=1",
-          "name": "Non Admin User",
-          "email": "nonadmin@rentacar.com",
-          "phone": "+1 (828) 541-3449",  
-          "password": 123456
-        },
-        {
-          "id": "bc17bff4-8974-4535-ab88-5dd9dbb8883b",
-          "isAdmin": true,
-          "picture": "https://picsum.photos/200/300",
-          "name": "Admin User",
-          "email": "admin@polarax.com",
-          "phone": "+1 (932) 545-3934",
-          "password": 123456
-        }
-      ],
-    "cars": [],
-    "rentals": []
-} 
+  "users": [
+    {
+      "id": "c7b73aa3-7b89-4496-a96d-0d0c4327840f",
+      "isAdmin": false,
+      "picture": "https://picsum.photos/200/300?random=1",
+      "name": "Non Admin Usern",
+      "email": "nonadmin@rentacar.com",
+      "phone": "+1 (828) 541-3449",
+      "password": 123456
+    },
+    {
+      "id": "bc17bff4-8974-4535-ab88-5dd9dbb8883b",
+      "isAdmin": true,
+      "picture": "https://picsum.photos/200/300",
+      "name": "Admin User",
+      "email": "admin@polarax.com",
+      "phone": "+1 (932) 545-3934",
+      "password": 123456
+    }
+  ],
+  "cars": [],
+  "rentals": []
+}

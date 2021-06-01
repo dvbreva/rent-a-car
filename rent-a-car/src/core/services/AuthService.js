@@ -21,10 +21,9 @@ export function isUserAdmin() {
 export async function login(userData) {
     console.log(`userData`, userData);
     const users = (await getAllUsers()).data;
-    console.log(users);
     const loggedUser = users.find(
         u =>
-            u.username === userData.username &&
+            u.email === userData.email &&
             u.password.toString() === userData.password
     );
 
