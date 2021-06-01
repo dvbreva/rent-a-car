@@ -1,10 +1,17 @@
 import './Header.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import { logout } from '../../../core/services/AuthService';
+import { logout, isUserAdmin } from '../../../core/services/AuthService';
 
 const Header = () => {
     const [redirect, setRedirect] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false);
+
+    useEffect(() => {
+        const roleResult = isUserAdmin();
+        console.log(roleResult);
+        setIsAdmin(roleResult);
+    }, []);
 
     const onLogout = () => {
         logout();
@@ -37,15 +44,21 @@ const Header = () => {
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item active">
                                 <Link className="nav-link" to="/">
-                                    {' '}
-                                    Home{' '}
+                                    Home
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/users-list">
-                                    Users List
+                                <Link className="nav-link" to="/cars-list">
+                                    Cars List
                                 </Link>
                             </li>
+                            {isAdmin ? (
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/users-list">
+                                        Users List
+                                    </Link>
+                                </li>
+                            ) : null}
                         </ul>
                         <span className="logout-btn" onClick={onLogout}>
                             Logout

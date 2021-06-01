@@ -10,12 +10,18 @@ export function getLoggedUser() {
     return JSON.parse(localStorage.getItem('loggedUser'));
 }
 
+export function isUserAdmin() {
+    const { isAdmin } = JSON.parse(localStorage.getItem('loggedUser'));
+    return isAdmin;
+}
+
 /**
  * @param userData => { username, password }
  */
 export async function login(userData) {
+    console.log(`userData`, userData);
     const users = (await getAllUsers()).data;
-
+    console.log(users);
     const loggedUser = users.find(
         u =>
             u.username === userData.username &&
