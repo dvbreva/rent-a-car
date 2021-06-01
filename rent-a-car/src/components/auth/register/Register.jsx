@@ -13,7 +13,8 @@ export class Register extends Component {
             email: '',
             picture: '',
             password: '',
-            redirect: false
+            redirect: false,
+            error: ''
         };
     }
 
@@ -21,20 +22,20 @@ export class Register extends Component {
         event.persist();
 
         this.setState({
-            [event.target.name]: event.target.value
+            [event.target.name]: event.target.value.trim()
         });
     };
 
     onFormSubmit = event => {
         event.preventDefault();
-        const { redirect, ...user } = this.state;
+        const { redirect, error, ...user } = this.state;
         register(user)
             .then(_ => {
                 this.setState({
                     redirect: true
                 });
             })
-            .catch(err => console.error(err));
+            .catch(err => this.setState({ error: err.message }));
     };
 
     render() {
@@ -46,6 +47,11 @@ export class Register extends Component {
                         className="register-form"
                         onSubmit={this.onFormSubmit}
                     >
+                        {this.state.error && (
+                            <span className="text-danger">
+                                {this.state.error}
+                            </span>
+                        )}
                         <div className="form-group">
                             <label htmlFor="name">Name: </label>
                             <input
@@ -54,6 +60,7 @@ export class Register extends Component {
                                 name="name"
                                 type="text"
                                 onChange={this.onInputChange}
+                                required
                             />
                         </div>
                         <div className="form-group">
@@ -64,6 +71,7 @@ export class Register extends Component {
                                 name="email"
                                 type="email"
                                 onChange={this.onInputChange}
+                                required
                             />
                         </div>
                         <div className="form-group">
@@ -74,6 +82,7 @@ export class Register extends Component {
                                 name="password"
                                 type="password"
                                 onChange={this.onInputChange}
+                                required
                             />
                         </div>
                         <div className="form-group">
@@ -84,6 +93,7 @@ export class Register extends Component {
                                 name="phone"
                                 type="text"
                                 onChange={this.onInputChange}
+                                required
                             />
                         </div>
                         <div className="form-group">

@@ -53,11 +53,24 @@ const Header = () => {
                                 </Link>
                             </li>
                             {isAdmin ? (
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/users-list">
-                                        Users List
-                                    </Link>
-                                </li>
+                                <>
+                                    <li className="nav-item">
+                                        <Link
+                                            className="nav-link"
+                                            to="/users-list"
+                                        >
+                                            Users List
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link
+                                            className="nav-link"
+                                            to="/users/create"
+                                        >
+                                            Create user
+                                        </Link>
+                                    </li>
+                                </>
                             ) : null}
                         </ul>
                         <span className="logout-btn" onClick={onLogout}>
