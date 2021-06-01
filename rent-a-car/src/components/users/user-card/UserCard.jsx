@@ -29,11 +29,11 @@ const userContent = (user, onDelete) => {
                             <span>{user.isAdmin.toString()}</span>
                         </div>
                     </Card.Text>
-                    <Link to={`/users/${user.id}`}>View profile</Link> |
+                    <Link to={`/users/${user.id}`}>View profile</Link> |{' '}
                     {loggedUser.isAdmin && (
                         <Link to={`/users/edit/${user.id}`}>Edit User</Link>
                     )}{' '}
-                    |
+                    |{' '}
                     {loggedUser.isAdmin && (
                         <span
                             className="delete-btn"
@@ -48,6 +48,7 @@ const userContent = (user, onDelete) => {
     );
 };
 
-export function UserCard({ user, onDelete }) {
+export function UserCard({ user, onDelete, ...props }) {
+    console.log(props);
     return user ? userContent(user, onDelete) : 'No user!';
 }

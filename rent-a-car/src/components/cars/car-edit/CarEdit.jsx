@@ -1,23 +1,26 @@
-import './UserEdit.css';
+import './CarEdit.css';
 import { useState, useEffect } from 'react';
-import { getUserById } from '../../../core/services/UserService';
-import { saveUser } from './../../../core/services/UserService';
+import { getCarById } from '../../../core/services/CarService';
+import { saveCar } from '../../../core/services/CarService';
 import { Redirect } from 'react-router';
 
-function EditUser(props) {
-    const [editedUser, setEditedUser] = useState({
+export function CarEdit(props) {
+    const [editedCar, setEditedCar] = useState({
         picture: '',
-        email: '',
         name: '',
-        isAdmin: false,
-        password: ''
+        vehicleType: '',
+        fuelType: '',
+        capacity: '',
+        pricePerDay: '',
+        isAvailable: '',
+        rentedBy: ''
     });
     const [shouldRedirect, setShouldRedirect] = useState(false);
 
     useEffect(() => {
         if (props.computedMatch.params.id) {
-            getUserById(props.computedMatch.params.id).then(response => {
-                setEditedUser(response.data);
+            getCarById(props.computedMatch.params.id).then(response => {
+                setEditedCar(response.data);
             });
         }
     }, [props.computedMatch.params.id]);
@@ -40,7 +43,7 @@ function EditUser(props) {
 
     return (
         <>
-            {shouldRedirect && <Redirect to="/users-list" />}
+            {shouldRedirect && <Redirect to="/cars-list" />}
             <div className="user-edit-wrapper">
                 <form className="user-edit-form" onSubmit={onFormSubmit}>
                     <div className="form-group">
@@ -50,56 +53,49 @@ function EditUser(props) {
                             id="name"
                             name="name"
                             className="form-control"
-                            value={editedUser.name}
+                            value={editedCar.name}
                             onChange={onInputChange}
                             required
                         />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="email">Email: </label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            className="form-control"
-                            value={editedUser.email}
-                            onChange={onInputChange}
-                            required
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="phone">Phone: </label>
+                        <label htmlFor="name">Vehicle Type: </label>
                         <input
                             type="text"
-                            id="phone"
-                            name="phone"
+                            id="vehicleType"
+                            name="vehicleType"
                             className="form-control"
-                            value={editedUser.phone}
+                            value={editedCar.vehicleType}
                             onChange={onInputChange}
                             required
                         />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="password">Password: </label>
+                        <label htmlFor="name">Fuel Type: </label>
                         <input
                             type="text"
-                            id="password"
-                            name="password"
+                            id="fuelType"
+                            name="fuelType"
                             className="form-control"
-                            value={editedUser.password}
+                            value={editedCar.fuelType}
                             onChange={onInputChange}
                             required
                         />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="isAdmin">Administrator: </label>
+                        <label htmlFor="name">Capacity: </label>
                         <input
-                            type="checkbox"
-                            id="isAdmin"
-                            name="isAdmin"
+                            type="text"
+                            id="capacity"
+                            name="capacity"
                             className="form-control"
-                            checked={editedUser.isAdmin}
+                            value={editedCar.capacity}
                             onChange={onInputChange}
+                            required
+                        />
+                        <label htmlFor="name">Price per day: </label>
+                        <input
+                            type="text"
+                            id="price"
+                            name="price"
+                            className="form-control"
+                            value={editedCar.price}
+                            onChange={onInputChange}
+                            required
                         />
                     </div>
                     <button className="btn btn-primary">Save</button>
@@ -108,5 +104,3 @@ function EditUser(props) {
         </>
     );
 }
-
-export default EditUser;

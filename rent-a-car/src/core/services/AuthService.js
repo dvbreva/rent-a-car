@@ -48,10 +48,7 @@ export async function register(userData) {
 
     userData = {
         ...userData,
-        isAdmin: false,
-        picture: userData.picture
-            ? userData.picture
-            : `https://picsum.photos/200/300?random=${Math.random()}`
+        isAdmin: false
     };
 
     return axios.post(`${apiUrl}/users`, userData);

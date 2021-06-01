@@ -1,0 +1,8 @@
+.user-card-wrapper {
+    margin: 1rem;
+}
+.actions {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 10px;
+}

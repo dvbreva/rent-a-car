@@ -22,8 +22,8 @@ const Header = () => {
             {redirect && <Redirect to="/login" />}
             <header className="header">
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <a className="navbar-brand" href="#">
-                        Navbar
+                    <a className="navbar-brand m-2" href="#">
+                        Rent-a-Car
                     </a>
                     <button
                         className="navbar-toggler"

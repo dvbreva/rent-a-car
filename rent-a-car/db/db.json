@@ -3,22 +3,32 @@
     {
       "id": "c7b73aa3-7b89-4496-a96d-0d0c4327840f",
       "isAdmin": false,
-      "picture": "https://picsum.photos/200/300?random=1",
       "name": "Non Admin Usern",
-      "email": "nonadmin@rentacar.com",
+      "email": "nonadmin@rent.com",
       "phone": "+1 (828) 541-3449",
       "password": 123456
     },
     {
       "id": "bc17bff4-8974-4535-ab88-5dd9dbb8883b",
       "isAdmin": true,
-      "picture": "https://picsum.photos/200/300",
       "name": "Admin User",
-      "email": "admin@polarax.com",
+      "email": "admin@rent.com",
       "phone": "+1 (932) 545-3934",
       "password": 123456
     }
   ],
-  "cars": [],
+  "cars": [
+    {
+      "id": "aaa7bff4-8974-4535-ab88-5dd9dbb8883b",
+      "name": "First car",
+      "vehicleType": 1,
+      "fuelType": 1,
+      "capacity": 6,
+      "pricePerDay": 50,
+      "picture": "https://picsum.photos/200/?random=1",
+      "isAvailable": true,
+      "rentedBy": {}
+    }
+  ],
   "rentals": []
 }
