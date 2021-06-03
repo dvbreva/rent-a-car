@@ -7,11 +7,15 @@ import EditUser from '../../users/user-edit/UserEdit';
 import { CarEdit } from '../../cars/car-edit/CarEdit';
 import CarsList from '../../cars/car-list/CarsList';
 import Car from '../../cars/car/Car';
+import { MainContainer } from '../../main/MainContainer';
 
 const Main = () => {
     return (
         <div className="main-content">
             <Switch>
+                {/* Home page */}
+                <AuthenticatedRoute exact path="/" component={MainContainer} />
+
                 {/* Customers */}
                 <AuthenticatedRoute
                     exact
