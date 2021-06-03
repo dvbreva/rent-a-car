@@ -1,4 +1,8 @@
 .users-list-wrapper {
     display: flex;
+    flex-direction: column;
+}
+.user-cards {
+    display: flex;
     flex-wrap: wrap;
 }

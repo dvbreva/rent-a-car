@@ -7,7 +7,6 @@ const Car = props => {
 
     useEffect(() => {
         getCarById(props.computedMatch.params.id).then(response => {
-            console.log(response);
             setCar(response.data);
         });
     }, []);

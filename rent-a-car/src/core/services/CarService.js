@@ -13,6 +13,8 @@ export function getCarById(id) {
 export function saveCar(carData) {
     if (carData.id) {
         return axios.put(`${apiUrl}/cars/${carData.id}`, carData);
+    } else {
+        return axios.post(`${apiUrl}/cars`, carData);
     }
 }
 

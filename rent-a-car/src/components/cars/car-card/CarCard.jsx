@@ -17,6 +17,18 @@ const carContent = (car, onDelete) => {
                     <Card.Title>{car.name}</Card.Title>
                     <Card.Text>
                         <div>
+                            <strong>Vehical Brand: </strong>
+                            <span>{car.brand}</span>
+                        </div>
+                        <div>
+                            <strong>Vehical Model: </strong>
+                            <span>{car.model}</span>
+                        </div>
+                        <div>
+                            <strong>Construction Year: </strong>
+                            <span>{car.constructionYear}</span>
+                        </div>
+                        <div>
                             <strong>Vehical Type: </strong>
                             <span>{car.vehicleType}</span>
                         </div>

@@ -4,17 +4,22 @@ import { getCarById } from '../../../core/services/CarService';
 import { saveCar } from '../../../core/services/CarService';
 import { Redirect } from 'react-router';
 
+const DEFAULT_CAR_STATE = {
+    picture: '',
+    name: '',
+    brand: '',
+    model: '',
+    constructionYear: '',
+    vehicleType: '',
+    fuelType: '',
+    capacity: '',
+    pricePerDay: '',
+    isAvailable: '',
+    rentedBy: ''
+};
+
 export function CarEdit(props) {
-    const [editedCar, setEditedCar] = useState({
-        picture: '',
-        name: '',
-        vehicleType: '',
-        fuelType: '',
-        capacity: '',
-        pricePerDay: '',
-        isAvailable: '',
-        rentedBy: ''
-    });
+    const [editedCar, setEditedCar] = useState(DEFAULT_CAR_STATE);
     const [shouldRedirect, setShouldRedirect] = useState(false);
 
     useEffect(() => {
@@ -26,7 +31,7 @@ export function CarEdit(props) {
     }, [props.computedMatch.params.id]);
 
     const onInputChange = event => {
-        setEditedUser(prevState => ({
+        setEditedCar(prevState => ({
             ...prevState,
             [event.target.name]: event.target.value.trim()
         }));
@@ -34,20 +39,22 @@ export function CarEdit(props) {
 
     const onFormSubmit = event => {
         event.preventDefault();
-
-        saveUser(editedUser).then(_ => {
-            console.log('SUCCESS');
+        saveCar(editedCar).then(_ => {
             setShouldRedirect(true);
         });
+    };
+
+    const handleClearClick = () => {
+        setEditedCar(DEFAULT_CAR_STATE);
     };
 
     return (
         <>
             {shouldRedirect && <Redirect to="/cars-list" />}
-            <div className="user-edit-wrapper">
-                <form className="user-edit-form" onSubmit={onFormSubmit}>
+            <div className="car-edit-wrapper">
+                <form className="car-edit-form" onSubmit={onFormSubmit}>
                     <div className="form-group">
-                        <label htmlFor="name">Name: </label>
+                        <label htmlFor="name">*Name: </label>
                         <input
                             type="text"
                             id="name"
@@ -57,48 +64,117 @@ export function CarEdit(props) {
                             onChange={onInputChange}
                             required
                         />
-                        <label htmlFor="name">Vehicle Type: </label>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="brand">*Brand: </label>
                         <input
                             type="text"
+                            id="brand"
+                            name="brand"
+                            className="form-control"
+                            value={editedCar.brand}
+                            onChange={onInputChange}
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="model">*Model: </label>
+                        <input
+                            type="text"
+                            id="model"
+                            name="model"
+                            className="form-control"
+                            value={editedCar.model}
+                            onChange={onInputChange}
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="constructionYear">
+                            *Construction year:{' '}
+                        </label>
+                        <input
+                            type="number"
+                            id="constructionYear"
+                            name="constructionYear"
+                            className="form-control"
+                            value={editedCar.constructionYear}
+                            onChange={onInputChange}
+                            min="1"
+                            max="2021"
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="vehicleType">*Vehicle Type: </label>
+                        <select
+                            type="select"
                             id="vehicleType"
                             name="vehicleType"
                             className="form-control"
                             value={editedCar.vehicleType}
                             onChange={onInputChange}
                             required
-                        />
-                        <label htmlFor="name">Fuel Type: </label>
-                        <input
-                            type="text"
+                        >
+                            <option value="Economy">Economy</option>
+                            <option value="Estate">Estate</option>
+                            <option value="Luxury">Luxury</option>
+                            <option value="SUV">SUV</option>
+                            <option value="Cargo">Cargo</option>
+                        </select>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="fuelType">*Fuel Type: </label>
+                        <select
+                            type="select"
                             id="fuelType"
                             name="fuelType"
                             className="form-control"
                             value={editedCar.fuelType}
                             onChange={onInputChange}
                             required
-                        />
-                        <label htmlFor="name">Capacity: </label>
+                        >
+                            <option value="Petrol">Petrol</option>
+                            <option value="Diesel">Diesel</option>
+                            <option value="Hybrid">Hybrid</option>
+                            <option value="Electric">Electic</option>
+                        </select>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="capacity">*Capacity: </label>
                         <input
-                            type="text"
+                            type="number"
                             id="capacity"
                             name="capacity"
                             className="form-control"
                             value={editedCar.capacity}
                             onChange={onInputChange}
-                            required
-                        />
-                        <label htmlFor="name">Price per day: </label>
-                        <input
-                            type="text"
-                            id="price"
-                            name="price"
-                            className="form-control"
-                            value={editedCar.price}
-                            onChange={onInputChange}
+                            min="1"
                             required
                         />
                     </div>
+                    <div className="form-group">
+                        <label htmlFor="pricePerDay">*Price per day: </label>
+                        <input
+                            type="number"
+                            id="pricePerDay"
+                            name="pricePerDay"
+                            className="form-control"
+                            value={editedCar.pricePerDay}
+                            onChange={onInputChange}
+                            min="1"
+                            step=".01"
+                            required
+                        />
+                    </div>
+
                     <button className="btn btn-primary">Save</button>
+                    <button
+                        className="btn btn-secondary"
+                        onClick={handleClearClick}
+                    >
+                        Clear
+                    </button>
                 </form>
             </div>
         </>

@@ -9,7 +9,6 @@ const Header = () => {
 
     useEffect(() => {
         const roleResult = isUserAdmin();
-        console.log(roleResult);
         setIsAdmin(roleResult);
     }, []);
 
@@ -56,18 +55,10 @@ const Header = () => {
                                 <>
                                     <li className="nav-item">
                                         <Link
-                                            className="nav-link"
+                                            className="nav-link mr-2"
                                             to="/users-list"
                                         >
                                             Users List
-                                        </Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link
-                                            className="nav-link"
-                                            to="/users/create"
-                                        >
-                                            Create user
                                         </Link>
                                     </li>
                                 </>

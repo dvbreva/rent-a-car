@@ -5,7 +5,7 @@
       "isAdmin": false,
       "name": "Non Admin Usern",
       "email": "nonadmin@rent.com",
-      "phone": "+1 (828) 541-3449",
+      "phone": "111-22-333",
       "password": 123456
     },
     {
@@ -13,7 +13,7 @@
       "isAdmin": true,
       "name": "Admin User",
       "email": "admin@rent.com",
-      "phone": "+1 (932) 545-3934",
+      "phone": "111-22-333",
       "password": 123456
     }
   ],
@@ -21,8 +21,11 @@
     {
       "id": "aaa7bff4-8974-4535-ab88-5dd9dbb8883b",
       "name": "First car",
-      "vehicleType": 1,
-      "fuelType": 1,
+      "brand": "Bugatti",
+      "model": "SUV-x5",
+      "constructionYear": 2005,
+      "vehicleType": "SUV",
+      "fuelType": "Hybrid",
       "capacity": 6,
       "pricePerDay": 50,
       "picture": "https://picsum.photos/200/?random=1",

@@ -4,14 +4,16 @@ import { getUserById } from '../../../core/services/UserService';
 import { saveUser } from './../../../core/services/UserService';
 import { Redirect } from 'react-router';
 
+const DEFAULT_USER_STATE = {
+    name: '',
+    email: '',
+    phone: '',
+    isAdmin: false,
+    password: ''
+};
+
 function EditUser(props) {
-    const [editedUser, setEditedUser] = useState({
-        picture: '',
-        email: '',
-        name: '',
-        isAdmin: false,
-        password: ''
-    });
+    const [editedUser, setEditedUser] = useState(DEFAULT_USER_STATE);
     const [shouldRedirect, setShouldRedirect] = useState(false);
 
     useEffect(() => {
@@ -31,11 +33,13 @@ function EditUser(props) {
 
     const onFormSubmit = event => {
         event.preventDefault();
-
         saveUser(editedUser).then(_ => {
-            console.log('SUCCESS');
             setShouldRedirect(true);
         });
+    };
+
+    const handleClearClick = () => {
+        setEditedUser(DEFAULT_USER_STATE);
     };
 
     return (
@@ -44,7 +48,7 @@ function EditUser(props) {
             <div className="user-edit-wrapper">
                 <form className="user-edit-form" onSubmit={onFormSubmit}>
                     <div className="form-group">
-                        <label htmlFor="name">Name: </label>
+                        <label htmlFor="name">*Name: </label>
                         <input
                             type="text"
                             id="name"
@@ -56,7 +60,7 @@ function EditUser(props) {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="email">Email: </label>
+                        <label htmlFor="email">*Email: </label>
                         <input
                             type="email"
                             id="email"
@@ -68,19 +72,20 @@ function EditUser(props) {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="phone">Phone: </label>
+                        <label htmlFor="phone">*Phone: </label>
                         <input
-                            type="text"
+                            type="tel"
                             id="phone"
                             name="phone"
                             className="form-control"
                             value={editedUser.phone}
                             onChange={onInputChange}
+                            pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                             required
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="password">Password: </label>
+                        <label htmlFor="password">*Password: </label>
                         <input
                             type="text"
                             id="password"
@@ -91,18 +96,14 @@ function EditUser(props) {
                             required
                         />
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="isAdmin">Administrator: </label>
-                        <input
-                            type="checkbox"
-                            id="isAdmin"
-                            name="isAdmin"
-                            className="form-control"
-                            checked={editedUser.isAdmin}
-                            onChange={onInputChange}
-                        />
-                    </div>
+
                     <button className="btn btn-primary">Save</button>
+                    <button
+                        className="btn btn-secondary"
+                        onClick={handleClearClick}
+                    >
+                        Clear
+                    </button>
                 </form>
             </div>
         </>
