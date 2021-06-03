@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
 
 const apiUrl = 'http://localhost:5000';
 
@@ -35,4 +36,20 @@ export function saveCar(carData) {
  */
 export function deleteCar(id) {
     return axios.delete(`${apiUrl}/cars/${id}`);
+}
+
+/**
+ * function used to save a rental event
+ */
+export async function rentCar(carId, userId) {
+    const originalCar = (await getCarById(carId)).data;
+    const updatedCar = { ...originalCar, isAvailable: false, rentedBy: userId };
+    const res = await saveCar(updatedCar);
+    if (res.status === 200) {
+        const carRental = { id: uuidv4(), rentedCar: carId, rentedBy: userId };
+        const result = await axios.post(`${apiUrl}/rentals`, carRental);
+        return result;
+    } else {
+        throw new Error();
+    }
 }

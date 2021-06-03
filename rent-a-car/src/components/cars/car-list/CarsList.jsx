@@ -1,4 +1,8 @@
-import { deleteCar, getAllCars } from '../../../core/services/CarService';
+import {
+    deleteCar,
+    getAllCars,
+    rentCar
+} from '../../../core/services/CarService';
 import { useEffect, useState } from 'react';
 import { CarCard } from '../car-card/CarCard';
 import './CarsList.css';
@@ -13,10 +17,11 @@ const CarsList = () => {
         availableCount: 0,
         unavailableCount: 0
     });
+    const [shouldRefetch, setShouldRefetch] = useState(null);
 
     useEffect(() => {
         handleFetch();
-    }, []);
+    }, [shouldRefetch]);
 
     const handleFetch = () => {
         getAllCars().then(response => {
@@ -43,6 +48,13 @@ const CarsList = () => {
         });
     };
 
+    const onRent = async (id, userId) => {
+        const result = await rentCar(id, userId);
+        if (result && result.status === 201) {
+            setShouldRefetch(true);
+        }
+    };
+
     return (
         <div className="cars-list-wrapper">
             {loggedUser.isAdmin ? (
@@ -67,6 +79,7 @@ const CarsList = () => {
                         car={car}
                         handleRefetch={handleFetch}
                         onDelete={onDelete}
+                        onRent={onRent}
                     />
                 ))}
             </div>

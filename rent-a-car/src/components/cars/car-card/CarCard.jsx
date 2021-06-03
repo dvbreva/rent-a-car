@@ -6,7 +6,7 @@ const wrapperStyles = {
     margin: '1rem'
 };
 
-const carContent = (car, onDelete) => {
+const carContent = (car, onDelete, onRent) => {
     const loggedUser = getLoggedUser();
 
     return (
@@ -62,12 +62,22 @@ const carContent = (car, onDelete) => {
                             Delete car
                         </span>
                     )}
+                    {car.isAvailable ? (
+                        <>
+                            <div
+                                className="delete-btn"
+                                onClick={() => onRent(car.id, loggedUser.id)}
+                            >
+                                Rent car
+                            </div>
+                        </>
+                    ) : null}
                 </Card.Body>
             </Card>
         </div>
     );
 };
 
-export function CarCard({ car, onDelete, ...props }) {
-    return car ? carContent(car, onDelete) : 'No car!';
+export function CarCard({ car, onDelete, onRent, ...props }) {
+    return car ? carContent(car, onDelete, onRent) : 'No car!';
 }

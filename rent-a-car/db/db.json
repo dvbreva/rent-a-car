@@ -29,9 +29,48 @@
       "capacity": 6,
       "pricePerDay": 50,
       "picture": "https://picsum.photos/200/?random=1",
+      "isAvailable": false,
+      "rentedBy": "bc17bff4-8974-4535-ab88-5dd9dbb8883b"
+    },
+    {
+      "id": "aaa7bff4-8974-4535-ab88-5dd9dbb8882b",
+      "name": "Second car",
+      "brand": "Rolls Royce",
+      "model": "SUV-x5",
+      "constructionYear": 2015,
+      "vehicleType": "SUV",
+      "fuelType": "Hybrid",
+      "capacity": 6,
+      "pricePerDay": 50,
+      "picture": "https://picsum.photos/200/?random=1",
       "isAvailable": true,
-      "rentedBy": {}
+      "rentedBy": ""
+    },
+    {
+      "id": "aaa7xxf4-8974-4535-ab88-5dd9dbb8882b",
+      "name": "Third car",
+      "brand": "Audi",
+      "model": "A8",
+      "constructionYear": 2016,
+      "vehicleType": "SUV",
+      "fuelType": "Hybrid",
+      "capacity": 6,
+      "pricePerDay": 50,
+      "picture": "https://picsum.photos/200/?random=1",
+      "isAvailable": false,
+      "rentedBy": "bc17bff4-8974-4535-ab88-5dd9dbb8883b"
     }
   ],
-  "rentals": []
+  "rentals": [
+    {
+      "id": "c7478b8e-3075-4761-a74e-56338ae7f4b8",
+      "rentedCar": "aaa7bff4-8974-4535-ab88-5dd9dbb8883b",
+      "rentedBy": "bc17bff4-8974-4535-ab88-5dd9dbb8883b"
+    },
+    {
+      "id": "5246ecd2-36c4-4203-82f6-3492777dc0ea",
+      "rentedCar": "aaa7xxf4-8974-4535-ab88-5dd9dbb8882b",
+      "rentedBy": "bc17bff4-8974-4535-ab88-5dd9dbb8883b"
+    }
+  ]
 }
