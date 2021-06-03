@@ -69,6 +69,5 @@ const carContent = (car, onDelete) => {
 };
 
 export function CarCard({ car, onDelete, ...props }) {
-    console.log(props);
     return car ? carContent(car, onDelete) : 'No car!';
 }

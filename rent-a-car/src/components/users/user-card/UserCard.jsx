@@ -49,6 +49,5 @@ const userContent = (user, onDelete) => {
 };
 
 export function UserCard({ user, onDelete, ...props }) {
-    console.log(props);
     return user ? userContent(user, onDelete) : 'No user!';
 }

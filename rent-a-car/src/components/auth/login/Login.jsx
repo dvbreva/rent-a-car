@@ -21,7 +21,6 @@ export function Login(props) {
 
         login(userData)
             .then(_ => {
-                console.log('success!');
                 setRedirect(true);
             })
             .catch(err => setError(err.message));

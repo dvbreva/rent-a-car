@@ -10,6 +10,9 @@ export function getLoggedUser() {
     return JSON.parse(localStorage.getItem('loggedUser'));
 }
 
+/**
+ * @returns a boolean indicating whether the logged user is admin
+ */
 export function isUserAdmin() {
     const { isAdmin } = JSON.parse(localStorage.getItem('loggedUser'));
     return isAdmin;
@@ -19,7 +22,6 @@ export function isUserAdmin() {
  * @param userData => { username, password }
  */
 export async function login(userData) {
-    console.log(`userData`, userData);
     const users = (await getAllUsers()).data;
     const loggedUser = users.find(
         u =>
@@ -54,6 +56,9 @@ export async function register(userData) {
     return axios.post(`${apiUrl}/users`, userData);
 }
 
+/**
+ * function used to handle the logout functionality
+ */
 export function logout() {
     localStorage.removeItem('loggedUser');
 }

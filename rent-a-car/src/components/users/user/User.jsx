@@ -7,7 +7,6 @@ const User = props => {
 
     useEffect(() => {
         getUserById(props.computedMatch.params.id).then(response => {
-            console.log(response);
             setUser(response.data);
         });
     }, []);
