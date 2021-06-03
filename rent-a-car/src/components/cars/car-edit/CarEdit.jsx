@@ -168,7 +168,7 @@ export function CarEdit(props) {
                         />
                     </div>
 
-                    <button className="btn btn-primary">Save</button>
+                    <button className="btn btn-primary mb-3">Save</button>
                     <button
                         className="btn btn-secondary"
                         onClick={handleClearClick}

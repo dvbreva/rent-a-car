@@ -2,10 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import '../src/vars.css';
 import './index.css';
+import './bootstrap.min.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import './bootstrap.min.css';
-import 'toasted-notes/src/styles.css';
 import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(

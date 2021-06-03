@@ -1,4 +1,6 @@
 .header {
-    background-color: var(--primaryGreen);
     width: 100%;
+}
+nav.navbar.navbar-expand-lg.navbar-light.bg-light {
+    padding: 10px 20px;
 }
