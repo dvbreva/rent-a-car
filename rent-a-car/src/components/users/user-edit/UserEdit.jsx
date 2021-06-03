@@ -1,8 +1,8 @@
-import './UserEdit.css';
 import { useState, useEffect } from 'react';
+import { Redirect } from 'react-router';
 import { getUserById } from '../../../core/services/UserService';
 import { saveUser } from './../../../core/services/UserService';
-import { Redirect } from 'react-router';
+import './UserEdit.css';
 
 const DEFAULT_USER_STATE = {
     name: '',

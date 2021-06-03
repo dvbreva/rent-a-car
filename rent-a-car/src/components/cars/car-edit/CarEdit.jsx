@@ -1,8 +1,8 @@
-import './CarEdit.css';
 import { useState, useEffect } from 'react';
+import { Redirect } from 'react-router';
 import { getCarById } from '../../../core/services/CarService';
 import { saveCar } from '../../../core/services/CarService';
-import { Redirect } from 'react-router';
+import './CarEdit.css';
 
 const DEFAULT_CAR_STATE = {
     picture: '',

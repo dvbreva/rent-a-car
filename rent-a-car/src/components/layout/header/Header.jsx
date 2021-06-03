@@ -1,7 +1,7 @@
-import './Header.css';
 import { useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { logout, isUserAdmin } from '../../../core/services/AuthService';
+import './Header.css';
 
 const Header = () => {
     const [redirect, setRedirect] = useState(false);

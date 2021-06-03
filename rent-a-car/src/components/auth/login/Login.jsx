@@ -1,7 +1,7 @@
 import { useState } from 'react';
+import { Redirect, Link } from 'react-router-dom';
 import { login } from '../../../core/services/AuthService';
 import './Login.css';
-import { Redirect, Link } from 'react-router-dom';
 
 export function Login(props) {
     const [userData, setUserData] = useState(null);
@@ -54,9 +54,9 @@ export function Login(props) {
                             required
                         />
                     </div>
-                    <button className="btn btn-primary">Login</button>
+                    <button className="btn btn-primary mb-2">Login</button>
                     <div>
-                        <Link to="/register">Don't have an account yet?</Link>
+                        <Link to="/register">Do not have an account yet?</Link>
                     </div>
                 </form>
             </div>

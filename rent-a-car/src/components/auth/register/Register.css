@@ -6,9 +6,9 @@
 }
 
 .register-form {
-    border: 1px solid gray;
+    border: 1px solid #cfcfcf;
     border-radius: 10px;
-    padding: 10px;
-    background-color: lightgray;
-    width: 400px;
+    padding: 20px;
+    background-color: #efefef;
+    width: 500px;
 }

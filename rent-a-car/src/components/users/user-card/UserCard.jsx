@@ -1,6 +1,7 @@
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { getLoggedUser } from '../../../core/services/AuthService';
+import { Button } from 'react-bootstrap';
 
 const wrapperStyles = {
     margin: '1rem'
@@ -29,19 +30,24 @@ const userContent = (user, onDelete) => {
                             <span>{user.isAdmin.toString()}</span>
                         </div>
                     </Card.Text>
-                    <Link to={`/users/${user.id}`}>View profile</Link> |{' '}
-                    {loggedUser.isAdmin && (
-                        <Link to={`/users/edit/${user.id}`}>Edit User</Link>
-                    )}{' '}
-                    |{' '}
-                    {loggedUser.isAdmin && (
-                        <span
-                            className="delete-btn"
-                            onClick={() => onDelete(user.id)}
-                        >
-                            Delete User
-                        </span>
-                    )}
+                    <div className="card-buttons">
+                        <Link to={`/users/${user.id}`}>
+                            <Button variant="light">View</Button>
+                        </Link>
+                        {loggedUser.isAdmin && (
+                            <Link to={`/users/edit/${user.id}`}>
+                                <Button variant="primary">Edit</Button>
+                            </Link>
+                        )}
+                        {loggedUser.isAdmin && (
+                            <Button
+                                variant="warning"
+                                onClick={() => onDelete(user.id)}
+                            >
+                                Delete
+                            </Button>
+                        )}
+                    </div>
                 </Card.Body>
             </Card>
         </div>

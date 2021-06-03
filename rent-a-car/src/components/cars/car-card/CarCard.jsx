@@ -1,5 +1,6 @@
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 import { getLoggedUser } from '../../../core/services/AuthService';
 
 const wrapperStyles = {
@@ -11,7 +12,7 @@ const carContent = (car, onDelete, onRent) => {
 
     return (
         <div className="car-card-wrapper" style={wrapperStyles}>
-            <Card style={{ width: '18rem' }}>
+            <Card style={{ width: '20rem' }}>
                 <Card.Img variant="top" src={car.picture} />
                 <Card.Body>
                     <Card.Title>{car.name}</Card.Title>
@@ -49,29 +50,42 @@ const carContent = (car, onDelete, onRent) => {
                             <span>{car.isAvailable ? 'True' : 'False'}</span>
                         </div>
                     </Card.Text>
-                    <Link to={`/cars/${car.id}`}>View details</Link> |{' '}
-                    {loggedUser.isAdmin && (
-                        <Link to={`/cars/edit/${car.id}`}>Edit car</Link>
-                    )}{' '}
-                    |{' '}
-                    {loggedUser.isAdmin && (
-                        <span
-                            className="delete-btn"
-                            onClick={() => onDelete(car.id)}
-                        >
-                            Delete car
-                        </span>
-                    )}
-                    {car.isAvailable ? (
-                        <>
-                            <div
-                                className="delete-btn"
-                                onClick={() => onRent(car.id, loggedUser.id)}
+                    <div className="card-buttons">
+                        <Link to={`/cars/${car.id}`}>
+                            <Button variant="light" size="sm">
+                                View
+                            </Button>
+                        </Link>
+                        {car.isAvailable ? (
+                            <>
+                                <Button
+                                    variant="light"
+                                    size="sm"
+                                    onClick={() =>
+                                        onRent(car.id, loggedUser.id)
+                                    }
+                                >
+                                    Rent
+                                </Button>
+                            </>
+                        ) : null}
+                        {loggedUser.isAdmin && (
+                            <Link to={`/cars/edit/${car.id}`}>
+                                <Button variant="primary" size="sm">
+                                    Edit
+                                </Button>
+                            </Link>
+                        )}
+                        {loggedUser.isAdmin && (
+                            <Button
+                                variant="warning"
+                                size="sm"
+                                onClick={() => onDelete(car.id)}
                             >
-                                Rent car
-                            </div>
-                        </>
-                    ) : null}
+                                Delete
+                            </Button>
+                        )}
+                    </div>
                 </Card.Body>
             </Card>
         </div>

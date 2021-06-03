@@ -1,14 +1,14 @@
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
     deleteCar,
     getAllCars,
     rentCar
 } from '../../../core/services/CarService';
-import { useEffect, useState } from 'react';
 import { CarCard } from '../car-card/CarCard';
-import './CarsList.css';
 import { getLoggedUser } from '../../../core/services/AuthService';
 import { Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import './CarsList.css';
 
 const CarsList = () => {
     const loggedUser = getLoggedUser();

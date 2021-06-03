@@ -1,10 +1,10 @@
-import { deleteUser, getAllUsers } from '../../../core/services/UserService';
 import { useEffect, useState } from 'react';
-import { UserCard } from '../user-card/UserCard';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import './UsersList.css';
+import { UserCard } from '../user-card/UserCard';
+import { deleteUser, getAllUsers } from '../../../core/services/UserService';
 import { getLoggedUser } from '../../../core/services/AuthService';
+import './UsersList.css';
 
 const UsersList = () => {
     const loggedUser = getLoggedUser();
